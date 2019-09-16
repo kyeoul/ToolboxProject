@@ -2,8 +2,10 @@ package com.example.toolboxproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -12,10 +14,11 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +41,38 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Spinner spinner = (Spinner) findViewById(R.id.spinnerTheme);
+        spinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerChoices, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> arg0, View v, int position, long id){
+        ImageView image = (ImageView) findViewById(R.id.imageView) ;
+        CharSequence string = "wwowowowoowow it worked";
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+        Resources res = getResources();
+        String[] themeArray = res.getStringArray(R.array.spinnerChoices);
+        if(themeArray[position].equals("Summer")){
+            image.setImageResource(R.drawable.summer);
+        }
+        else if(themeArray[position].equals("Winter")){
+            image.setImageResource(R.drawable.winter);
+        }
+        else if(themeArray[position].equals("Fall")){
+            image.setImageResource(R.drawable.fall);
+        }
+        else if(themeArray[position].equals("Spring")){
+            image.setImageResource(R.drawable.spring);
+        }
+        else{
+            image.setImageResource(R.drawable.whole_brain);
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0){
+        setTheme(R.style.AppTheme);
     }
 
     public void onCheckboxChecked(View v){
