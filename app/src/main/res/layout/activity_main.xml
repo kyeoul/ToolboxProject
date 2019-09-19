@@ -16,7 +16,7 @@
         app:layout_constraintRight_toLeftOf="@+id/imageView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="@dimen/borderMargin"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="@dimen/borderMargin"
         android:layout_marginBottom="50dp">
         <RadioButton
             android:id="@+id/radioBlue"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerImage"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="@dimen/borderMargin"
         android:onClick="onCheckboxChecked"/>
 
     <Switch
@@ -93,17 +93,31 @@
         android:text="Image"
         app:layout_constraintTop_toBottomOf="@+id/checkBox"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="@dimen/borderMargin"
         android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/surpriseButton"
+        android:drawableLeft="@drawable/ic_action_mark"
+        android:drawablePadding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="40dp" />
+        android:layout_marginBottom="@dimen/borderMargin"
+        android:layout_marginEnd="@dimen/borderMargin"
+        android:text="surprise me"
+        android:onClick="onClick"/>
+
+    <TextView
+        android:id="@+id/creativeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="very creative yes"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="20dp"
+        android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
